@@ -1,5 +1,17 @@
-# 在这个文件中编写代码实现题目要求的功能
-import keyword  # 建议使用这个库处理关键字
-reserved_words = set(keyword.kwlist)
+import keyword
 
-# 以下内容自行完成
+# 读取原文件
+with open('random_int.py', 'r') as f:
+    content = f.read()
+
+# 处理字符
+converted_content = ''
+for char in content:
+    if char.islower() and char not in keyword.kwlist:
+        converted_content += char.upper()
+    else:
+        converted_content += char
+
+# 写入新文件
+with open('random_int_converted.py', 'w') as f:
+    f.write(converted_content)
